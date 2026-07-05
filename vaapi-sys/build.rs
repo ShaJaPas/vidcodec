@@ -69,11 +69,6 @@ fn panic_libva_not_found() -> ! {
     panic!(
         "libva not found via pkg-config.\n\
          \n\
-         Debian/Ubuntu: sudo apt install libva-dev libva-drm-dev libva-wayland-dev libva-x11-dev pkg-config\n\
-         Fedora:          sudo dnf install libva-devel libva-drm-devel libva-wayland-devel libva-x11-devel pkg-config\n\
-         Arch:            sudo pacman -S libva libva-mesa-driver\n\
-         NixOS:           nix-shell shell.nix   (or set LIBVA_LIB_DIR to libva's lib directory)\n\
-         \n\
          See vaapi-sys/README.md for details."
     );
 }

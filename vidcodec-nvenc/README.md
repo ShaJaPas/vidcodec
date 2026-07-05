@@ -15,8 +15,6 @@ Build uses [`nvidia-video-codec-sdk`](https://crates.io/crates/nvidia-video-code
 - **Default (`ci-check`)**: compiles the library without linking NVENC (CI / no GPU).
 - **`link`** (`--no-default-features --features link`): links `libnvidia-encode` / `libnvcuvid`.
 
-On NixOS use `nix-shell shell.nix` before building with `link`. On other systems set
-`NVIDIA_VIDEO_CODEC_SDK_PATH` to a directory containing those libraries (driver or SDK stubs).
 
 ## Usage
 
