@@ -721,13 +721,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "vidcodec-probe"
-version = "0.1.0"
-dependencies = [
- "vidcodec",
-]
-
-[[package]]
 name = "vidcodec-util"
 version = "0.1.0"
 dependencies = [

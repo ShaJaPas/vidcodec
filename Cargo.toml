@@ -1,5 +1,5 @@
 [workspace]
-members = [".", "vaapi-sys", "vidcodec-bitstream", "vidcodec-util", "vidcodec-vaapi", "vidcodec-nvenc", "vidcodec-mf", "vidcodec-videotoolbox", "vidcodec-mediacodec", "vidcodec-probe", "vidcodec-core"]
+members = [".", "vaapi-sys", "vidcodec-bitstream", "vidcodec-util", "vidcodec-vaapi", "vidcodec-nvenc", "vidcodec-mf", "vidcodec-videotoolbox", "vidcodec-mediacodec", "vidcodec-core"]
 resolver = "2"
 
 [package]
