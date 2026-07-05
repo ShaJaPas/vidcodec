@@ -1,0 +1,22 @@
+[package]
+name = "vidcodec-core"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Core types and traits for vidcodec hardware video codec facade"
+license = "Apache-2.0"
+
+[dependencies]
+bytes = "1.10"
+thiserror = "2"
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"

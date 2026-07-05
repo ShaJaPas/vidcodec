@@ -1,0 +1,33 @@
+[package]
+name = "vidcodec-vaapi"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "VA-API hardware backend for vidcodec (Linux)"
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["vaapi", "video", "hardware", "h264", "hevc"]
+categories = ["multimedia", "api-bindings"]
+
+[dependencies]
+bytes = "1.10"
+libc = "0.2"
+vaapi-sys = { path = "../vaapi-sys", features = ["drm", "wayland", "x11"] }
+vidcodec-core = { path = "../vidcodec-core" }
+vidcodec-bitstream = { path = "../vidcodec-bitstream" }
+x11-dl = "2.21"
+wayland-sys = { version = "0.31", features = ["client", "dlopen"] }
+
+[dev-dependencies]
+serial_test = "3"
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"

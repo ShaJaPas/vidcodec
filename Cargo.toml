@@ -1,0 +1,51 @@
+[workspace]
+members = [".", "vaapi-sys", "vidcodec-bitstream", "vidcodec-util", "vidcodec-vaapi", "vidcodec-nvenc", "vidcodec-mf", "vidcodec-videotoolbox", "vidcodec-mediacodec", "vidcodec-probe", "vidcodec-core"]
+resolver = "2"
+
+[package]
+name = "vidcodec"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Cross-platform hardware-only video codec facade for real-time applications"
+readme = "README.md"
+license = "Apache-2.0"
+documentation = "https://docs.rs/vidcodec"
+keywords = ["video", "codec", "hardware", "encode", "decode"]
+categories = ["multimedia", "api-bindings"]
+
+[features]
+default = ["std"]
+std = []
+nvenc = ["dep:vidcodec-nvenc"]
+
+[dependencies]
+vidcodec-core = { path = "vidcodec-core" }
+vidcodec-nvenc = { path = "vidcodec-nvenc", optional = true }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+vidcodec-vaapi = { path = "vidcodec-vaapi" }
+
+[target.'cfg(target_os = "android")'.dependencies]
+vidcodec-mediacodec = { path = "vidcodec-mediacodec" }
+
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
+vidcodec-videotoolbox = { path = "vidcodec-videotoolbox" }
+
+[target.'cfg(windows)'.dependencies]
+vidcodec-mf = { path = "vidcodec-mf" }
+
+[dev-dependencies]
+bytes = "1.10"
+serial_test = "3"
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"

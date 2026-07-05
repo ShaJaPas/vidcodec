@@ -1,0 +1,36 @@
+[package]
+name = "vidcodec-videotoolbox"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Apple VideoToolbox hardware backend for vidcodec (macOS)"
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["videotoolbox", "video", "hardware", "h264", "macos"]
+categories = ["multimedia", "api-bindings"]
+
+[dependencies]
+bytes = "1.10"
+vidcodec-core = { path = "../vidcodec-core" }
+vidcodec-bitstream = { path = "../vidcodec-bitstream" }
+vidcodec-util = { path = "../vidcodec-util" }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+apple-cf = { version = "0.9", default-features = false, features = ["cm", "cv", "iosurface"] }
+pollster = "0.4"
+videotoolbox = { version = "0.18", features = ["async"] }
+
+[dev-dependencies]
+bytes = "1.10"
+serial_test = "3"
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"

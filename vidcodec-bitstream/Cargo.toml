@@ -1,0 +1,16 @@
+[package]
+name = "vidcodec-bitstream"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Shared H.264/HEVC/AV1 bitstream syntax parsing for vidcodec backends"
+license = "Apache-2.0"
+keywords = ["h264", "bitstream", "video", "parser"]
+categories = ["multimedia", "encoding"]
+
+[dependencies]
+oxideav-bitstream = "0.0.2"
+vidcodec-core = { path = "../vidcodec-core" }
+
+[lints.rust]
+missing_docs = "deny"

@@ -1,0 +1,51 @@
+[package]
+name = "vidcodec-nvenc"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "NVIDIA NVENC/NVDEC hardware backend for vidcodec (Linux, Windows)"
+readme = "README.md"
+license = "Apache-2.0"
+
+[dependencies]
+bytes = "1.10"
+vidcodec-core = { path = "../vidcodec-core" }
+vidcodec-bitstream = { path = "../vidcodec-bitstream" }
+vidcodec-util = { path = "../vidcodec-util" }
+
+[target.'cfg(any(target_os = "linux", target_os = "windows"))'.dependencies]
+cudarc = { version = "0.16", default-features = false, features = ["dynamic-loading", "cuda-12020"] }
+nvidia-video-codec-sdk = { version = "0.4", default-features = false, features = ["ci-check"] }
+
+[dev-dependencies]
+serial_test = "3"
+
+[features]
+default = []
+# Build without linking NVENC (library-only / CI).
+ci-check = []
+# Link `libnvidia-encode` / `libnvcuvid` (NVIDIA driver or SDK stubs in `NVIDIA_VIDEO_CODEC_SDK_PATH`).
+link = []
+
+[[example]]
+name = "enumerate"
+required-features = ["link"]
+
+[[test]]
+name = "probe"
+required-features = ["link"]
+
+[[test]]
+name = "roundtrip"
+required-features = ["link"]
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"

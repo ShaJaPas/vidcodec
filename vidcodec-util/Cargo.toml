@@ -1,0 +1,15 @@
+[package]
+name = "vidcodec-util"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Shared utilities for vidcodec hardware backends (pixel conversion, profiles)"
+license = "Apache-2.0"
+keywords = ["video", "codec", "utility", "nv12", "i420"]
+categories = ["multimedia"]
+
+[dependencies]
+vidcodec-core = { path = "../vidcodec-core" }
+
+[lints.rust]
+missing_docs = "deny"

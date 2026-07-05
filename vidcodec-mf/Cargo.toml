@@ -1,0 +1,40 @@
+[package]
+name = "vidcodec-mf"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89"
+description = "Windows Media Foundation hardware backend for vidcodec"
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["media-foundation", "video", "hardware", "h264", "windows"]
+categories = ["multimedia", "api-bindings"]
+
+[dependencies]
+bytes = "1.10"
+vidcodec-core = { path = "../vidcodec-core" }
+vidcodec-bitstream = { path = "../vidcodec-bitstream" }
+vidcodec-util = { path = "../vidcodec-util" }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Media_MediaFoundation",
+    "Win32_System_Com",
+    "Win32_System_Com_StructuredStorage",
+    "Win32_System_Ole",
+    "Win32_System_Variant",
+] }
+
+[dev-dependencies]
+serial_test = "3"
+
+[lints.rust]
+missing_docs = "deny"
+unused_lifetimes = "deny"
+unused_qualifications = "deny"
+unreachable_pub = "deny"
+
+[lints.clippy]
+std_instead_of_core = "warn"
+std_instead_of_alloc = "warn"
+undocumented_unsafe_blocks = "deny"
