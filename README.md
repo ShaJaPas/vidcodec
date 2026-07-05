@@ -5,6 +5,16 @@ applications (VoIP, screen share, low-latency streaming).
 
 Vidcodec does **not** implement codecs and does **not** expose CPU software encoders.
 
+## Backend support
+
+| Backend | Platform | H.264 enc | H.264 dec | H.265 enc | H.265 dec | AV1 enc | AV1 dec |
+|---|---|---|---|---|---|---|---|
+| [Media Foundation](vidcodec-mf/) | Windows | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| [VideoToolbox](vidcodec-videotoolbox/) | macOS | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| [VA-API](vidcodec-vaapi/) | Linux | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| [NVENC](vidcodec-nvenc/) | Linux, Windows | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ |
+| [MediaCodec](vidcodec-mediacodec/) | Android | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ |
+
 It defines a small API for:
 
 - **Probing** which hardware codec/backend combinations the host exposes.
